@@ -1,5 +1,6 @@
 package com.example.assignment1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,16 +15,28 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.VideoView;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.assignment1.ParseJson;
+
+import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
+import java.net.URI;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     Button button_play;
     VideoView videoView;
-    DownloadManager downloadManager;
-    long queueid;
+    TextView current_gesture_title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +51,31 @@ public class MainActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
         // Set Up video
         button_play = findViewById(R.id.button_play);
         videoView = findViewById(R.id.videoView);
+        current_gesture_title = findViewById(R.id.textView);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        onBackPressed();
+
+        int index = Integer.parseInt(menuItem.getTitleCondensed().toString());
+        ParseJson json = new ParseJson("gesture_list.json", this);
+        JSONObject gesture_obj = json.get_json(index);
+
+        try {
+            current_gesture_title.setText(gesture_obj.getString("name"));
+            Uri uri = Uri.parse(gesture_obj.getString("url"));
+            videoView.setVideoURI(uri);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return true;
     }
 
     @Override
@@ -52,11 +87,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void videoPlay(View v){
-        String videoPath = "https://www.signingsavvy.com/media/mp4-ld/24/24851.mp4";
-        Uri uri = Uri.parse(videoPath);
-        videoView.setVideoURI(uri);
+//        String videoPath = "https://www.signingsavvy.com/media/mp4-ld/24/24851.mp4";
+//        Uri uri = Uri.parse(videoPath);
+//        videoView.setVideoURI(uri);
         videoView.start();
     }
 }

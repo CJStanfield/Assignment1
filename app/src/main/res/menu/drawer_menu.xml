@@ -6,82 +6,102 @@
         <item
             android:id="@+id/gesture1"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture1"></item>
+            android:titleCondensed="1"
+            android:title="gift"></item>
         <item
             android:id="@+id/gesture2"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture2"></item>
+            android:titleCondensed="2"
+            android:title="car"></item>
         <item
             android:id="@+id/gesture3"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture3"></item>
+            android:titleCondensed="3"
+            android:title="pay"></item>
         <item
             android:id="@+id/gesture4"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture4"></item>
+            android:titleCondensed="4"
+            android:title="pet"></item>
         <item
             android:id="@+id/gesture5"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture5"></item>
+            android:titleCondensed="5"
+            android:title="sell"></item>
         <item
             android:id="@+id/gesture6"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture6"></item>
+            android:titleCondensed="6"
+            android:title="explain"></item>
         <item
             android:id="@+id/gesture7"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture7"></item>
+            android:titleCondensed="7"
+            android:title="that"></item>
         <item
             android:id="@+id/gesture8"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture8"></item>
+            android:titleCondensed="8"
+            android:title="book"></item>
         <item
             android:id="@+id/gesture9"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture9"></item>
+            android:titleCondensed="9"
+            android:title="now"></item>
         <item
             android:id="@+id/gesture10"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture10"></item>
+            android:titleCondensed="10"
+            android:title="work"></item>
         <item
             android:id="@+id/gesture11"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture11"></item>
+            android:titleCondensed="11"
+            android:title="total"></item>
         <item
             android:id="@+id/gesture12"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture12"></item>
+            android:titleCondensed="12"
+            android:title="trip"></item>
         <item
             android:id="@+id/gesture13"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture13"></item>
+            android:titleCondensed="13"
+            android:title="future"></item>
         <item
             android:id="@+id/gesture14"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture14"></item>
+            android:titleCondensed="14"
+            android:title="good"></item>
         <item
             android:id="@+id/gesture15"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture15"></item>
+            android:titleCondensed="15"
+            android:title="thank you"></item>
         <item
             android:id="@+id/gesture16"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture16"></item>
+            android:titleCondensed="16"
+            android:title="learn"></item>
         <item
             android:id="@+id/gesture17"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture17"></item>
+            android:titleCondensed="17"
+            android:title="agent"></item>
         <item
             android:id="@+id/gesture18"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture18"></item>
+            android:titleCondensed="18"
+            android:title="should"></item>
         <item
             android:id="@+id/gesture19"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture19"></item>
+            android:titleCondensed="19"
+            android:title="like"></item>
         <item
             android:id="@+id/gesture20"
             android:icon="@drawable/ic_link_black"
-            android:title="gesture20"></item>
+            android:titleCondensed="20"
+            android:title="movie"></item>
     </group>
 </menu>

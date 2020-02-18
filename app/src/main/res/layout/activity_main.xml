@@ -52,6 +52,18 @@
                     android:text="Play"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/videoView" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="176dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="18dp"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toTopOf="@+id/videoView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </FrameLayout>
