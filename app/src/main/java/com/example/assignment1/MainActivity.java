@@ -12,6 +12,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -34,6 +35,7 @@ import java.net.URI;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     Button button_play;
+    Button button_camera;
     VideoView videoView;
     TextView current_gesture_title;
 
@@ -58,6 +60,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         button_play = findViewById(R.id.button_play);
         videoView = findViewById(R.id.videoView);
         current_gesture_title = findViewById(R.id.textView);
+        button_camera = findViewById(R.id.button_practice);
+
+        button_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent int1 = new Intent(MainActivity.this, CameraActivity.class);
+                startActivity(int1);
+            }
+        });
+
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
     }
 
     @Override
@@ -88,9 +106,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void videoPlay(View v){
-//        String videoPath = "https://www.signingsavvy.com/media/mp4-ld/24/24851.mp4";
-//        Uri uri = Uri.parse(videoPath);
-//        videoView.setVideoURI(uri);
         videoView.start();
     }
 }
