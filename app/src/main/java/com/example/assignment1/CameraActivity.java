@@ -43,7 +43,7 @@ public class CameraActivity extends AppCompatActivity {
     }
 
     public void captureVideo(View view){
-        Intent videoIntent = new Intent(MediaStore.INTENT_ACTION_VIDEO_CAMERA);
+        Intent videoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
 
         if(videoIntent.resolveActivity(getPackageManager()) != null){
             startActivityForResult(videoIntent, VIDEO_REQUEST);
@@ -58,8 +58,9 @@ public class CameraActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == VIDEO_REQUEST && requestCode == RESULT_OK){
+        if(requestCode == VIDEO_REQUEST && resultCode == RESULT_OK){
             videoUri = data.getData();
         }
     }
+
 }
