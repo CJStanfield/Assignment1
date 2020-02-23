@@ -1,18 +1,26 @@
 package com.example.assignment1;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.VideoView;
 
 public class CameraActivity extends AppCompatActivity {
+
+    private static int VIDEO_REQUEST = 101;
+    private Uri videoUri = null;
+    private VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +37,29 @@ public class CameraActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        videoView = findViewById(R.id.videoView_Camera);
+
     }
 
+    public void captureVideo(View view){
+        Intent videoIntent = new Intent(MediaStore.INTENT_ACTION_VIDEO_CAMERA);
+
+        if(videoIntent.resolveActivity(getPackageManager()) != null){
+            startActivityForResult(videoIntent, VIDEO_REQUEST);
+        }
+    }
+
+    public void playRecordedVideo(View view){
+        videoView.setVideoURI(videoUri);
+        videoView.start();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == VIDEO_REQUEST && requestCode == RESULT_OK){
+            videoUri = data.getData();
+        }
+    }
 }

@@ -30,9 +30,52 @@
             android:id="@+id/button_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="176dp"
-            android:layout_marginTop="568dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="652dp"
             android:text="Back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="captureVideo"
+            android:layout_marginStart="92dp"
+            android:layout_marginTop="536dp"
+            android:text="Record Video"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="playRecordedVideo"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="536dp"
+            android:text="Play"
+            app:layout_constraintStart_toEndOf="@+id/button_record"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="145dp"
+            android:layout_marginEnd="47dp"
+            android:layout_marginBottom="31dp"
+            android:text="Upload"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_back" />
+
+        <VideoView
+            android:id="@+id/videoView_Camera"
+            android:layout_width="401dp"
+            android:layout_height="295dp"
+            android:layout_marginTop="86dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
