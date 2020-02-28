@@ -11,10 +11,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.VideoView;
+
+import java.io.File;
 
 public class CameraActivity extends AppCompatActivity {
 
@@ -43,9 +46,14 @@ public class CameraActivity extends AppCompatActivity {
     }
 
     public void captureVideo(View view){
+        File mediaFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/myvideo.mp4");
         Intent videoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        videoIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
 
-        if(videoIntent.resolveActivity(getPackageManager()) != null){
+        videoUri = Uri.fromFile(mediaFile);
+
+        videoIntent.putExtra(MediaStore.EXTRA_OUTPUT, videoUri);
+        if(videoIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(videoIntent, VIDEO_REQUEST);
         }
     }
@@ -53,6 +61,10 @@ public class CameraActivity extends AppCompatActivity {
     public void playRecordedVideo(View view){
         videoView.setVideoURI(videoUri);
         videoView.start();
+    }
+
+    public void uploadVideo(View view){
+        UploadFile file = new UploadFile(this.videoUri);
     }
 
     @Override

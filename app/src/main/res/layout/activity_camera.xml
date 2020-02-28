@@ -65,6 +65,7 @@
             android:layout_marginStart="145dp"
             android:layout_marginEnd="47dp"
             android:layout_marginBottom="19dp"
+            android:onClick="uploadVideo"
             android:text="Upload"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
