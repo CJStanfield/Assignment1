@@ -1,10 +1,12 @@
 package com.example.assignment1;
 
+import android.net.ParseException;
 import android.net.Uri;
 
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -19,7 +21,9 @@ public class UploadFile {
     public int uploadFile(){
         HttpURLConnection connection = null;
         DataOutputStream outputStream = null;
-
+        int bytesRead, bytesAvailable, bufferSize;
+        byte[] buffer;
+        int maxBufferSize = 1 * 1024 * 1024;
         File sourceFile = new File(this.videoUri.getPath());
 
         if(!sourceFile.isFile()){
@@ -33,6 +37,14 @@ public class UploadFile {
 
                 //Open a HTTP connection to the URL
                 connection = (HttpURLConnection) url.openConnection();
+                connection.setDoInput(true);
+                connection.setDoOutput(true);
+                connection.setUseCaches(false);
+                connection.setRequestMethod("POST");
+
+                outputStream = new DataOutputStream(connection.getOutputStream());
+
+
 
 
 
