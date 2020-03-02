@@ -7,101 +7,101 @@
             android:id="@+id/gesture1"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="1"
-            android:title="gift"></item>
+            android:title="Buy"></item>
         <item
             android:id="@+id/gesture2"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="2"
-            android:title="car"></item>
+            android:title="House"></item>
         <item
             android:id="@+id/gesture3"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="3"
-            android:title="pay"></item>
+            android:title="Fun"></item>
         <item
             android:id="@+id/gesture4"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="4"
-            android:title="pet"></item>
+            android:title="Hope"></item>
         <item
             android:id="@+id/gesture5"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="5"
-            android:title="sell"></item>
+            android:title="Arrive"></item>
         <item
             android:id="@+id/gesture6"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="6"
-            android:title="explain"></item>
+            android:title="Really"></item>
         <item
             android:id="@+id/gesture7"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="7"
-            android:title="that"></item>
+            android:title="Read"></item>
         <item
             android:id="@+id/gesture8"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="8"
-            android:title="book"></item>
+            android:title="Lip"></item>
         <item
             android:id="@+id/gesture9"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="9"
-            android:title="now"></item>
+            android:title="Mouth"></item>
         <item
             android:id="@+id/gesture10"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="10"
-            android:title="work"></item>
+            android:title="Some"></item>
         <item
             android:id="@+id/gesture11"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="11"
-            android:title="total"></item>
+            android:title="Communicate"></item>
         <item
             android:id="@+id/gesture12"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="12"
-            android:title="trip"></item>
+            android:title="Write"></item>
         <item
             android:id="@+id/gesture13"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="13"
-            android:title="future"></item>
+            android:title="Create"></item>
         <item
             android:id="@+id/gesture14"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="14"
-            android:title="good"></item>
+            android:title="Pretend"></item>
         <item
             android:id="@+id/gesture15"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="15"
-            android:title="thank you"></item>
+            android:title="Sister"></item>
         <item
             android:id="@+id/gesture16"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="16"
-            android:title="learn"></item>
+            android:title="Man"></item>
         <item
             android:id="@+id/gesture17"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="17"
-            android:title="agent"></item>
+            android:title="One"></item>
         <item
             android:id="@+id/gesture18"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="18"
-            android:title="should"></item>
+            android:title="Drive"></item>
         <item
             android:id="@+id/gesture19"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="19"
-            android:title="like"></item>
+            android:title="Perfect"></item>
         <item
             android:id="@+id/gesture20"
             android:icon="@drawable/ic_link_black"
             android:titleCondensed="20"
-            android:title="movie"></item>
+            android:title="Mother"></item>
     </group>
 </menu>

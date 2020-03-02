@@ -4,47 +4,49 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.DownloadManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.Manifest;
 import android.content.Intent;
-import android.database.Cursor;
+import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
-
-import com.example.assignment1.ParseJson;
 
 import com.google.android.material.navigation.NavigationView;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.net.URI;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private DrawerLayout drawer;
+    DrawerLayout drawer;
     Button button_play;
     Button button_camera;
     VideoView videoView;
+    Toolbar toolbar;
     TextView current_gesture_title;
+    NavigationView navigationView;
+
+    public static String currentGesture;
+    public static int currentGestureId = 0;
+    public static ParseJson gestureJson;
+
+    private static final int REQUEST_WRITE_STORAGE = 112;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         drawer =findViewById(R.id.drawer_layout);
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         // Set Up video
@@ -76,23 +78,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 mp.setLooping(true);
             }
         });
+
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_STORAGE);
+        }
+
+        //Create a global ParseJson object that keeps track of uploads
+        gestureJson = new ParseJson("gesture_list.json", this);
+
+        //Initialize the first gesture
+        setGesture(null);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        onBackPressed();
+    public void setGesture(MenuItem menuItem){
+        int index;
+        if(menuItem == null)
+            index = currentGestureId + 1;
+        else
+            index = Integer.parseInt(menuItem.getTitleCondensed().toString());
 
-        int index = Integer.parseInt(menuItem.getTitleCondensed().toString());
-        ParseJson json = new ParseJson("gesture_list.json", this);
-        JSONObject gesture_obj = json.get_json(index);
+        currentGestureId = index - 1;
+        JSONObject gesture_obj = gestureJson.get_json(index);
 
         try {
-            current_gesture_title.setText(gesture_obj.getString("name"));
+            currentGesture = gesture_obj.getString("name");
+            current_gesture_title.setText(currentGesture);
             Uri uri = Uri.parse(gesture_obj.getString("url"));
             videoView.setVideoURI(uri);
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        onBackPressed();
+        setGesture(menuItem);   //set the current gesture based on the menuItem that was selected
         return true;
     }
 
@@ -107,5 +128,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void videoPlay(View v){
         videoView.start();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case REQUEST_WRITE_STORAGE:
+            {
+                if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    Toast.makeText(this,"permission granted", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(this, "permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 }
