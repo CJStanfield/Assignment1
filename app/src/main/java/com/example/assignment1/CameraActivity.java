@@ -19,6 +19,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -43,6 +44,7 @@ public class CameraActivity extends AppCompatActivity {
     public static final String ENDPOINT = "/upload/upload.php";
 
     public ProgressDialog progressDialog;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,9 @@ public class CameraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        textView = findViewById(R.id.textView_Camera);
+        textView.setText(MainActivity.currentGesture);
 
         Button button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {

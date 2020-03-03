@@ -130,6 +130,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         videoView.start();
     }
 
+    public void videoPause(View v) { videoView.pause(); }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

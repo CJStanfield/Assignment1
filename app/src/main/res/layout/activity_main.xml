@@ -46,8 +46,8 @@
                     android:id="@+id/button_play"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="160dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginStart="276dp"
+                    android:layout_marginTop="40dp"
                     android:onClick="videoPlay"
                     android:text="Play"
                     app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +61,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="18dp"
                     android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     app:layout_constraintBottom_toTopOf="@+id/videoView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -74,6 +75,17 @@
                     android:text="Practice"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/button_play" />
+
+                <Button
+                    android:id="@+id/button_Pause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="40dp"
+                    android:onClick="videoPause"
+                    android:text="Pause"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/videoView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </FrameLayout>
